@@ -1,7 +1,10 @@
 # Ignore everything
 *.*
 
-# But not these files...
+# Ignore backup folders
+Fotd/backup/**/
+
+# Keep mod files
 !/.gitignore
 !/setup-FotD.exe
 !/setup-FotD.tp2

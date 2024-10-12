@@ -50,11 +50,39 @@ DEFINE_PATCH_MACRO ~COUNT_EFFECTS~ BEGIN
   SET "#abilitiesread" = "0"
   SET "#effects" = "0"
   WHILE ("%#abilities%" > 0) BEGIN
-    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x28)) "#e"
+    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x38)) "#e"
     SET "#effects" += "%#e%"
     SET "#abilitiesread" += "1"
     SET "#abilities" -= "1"
   END
+END
+
+DEFINE_PATCH_FUNCTION COUNT_ITEM_EFFECTS RET count BEGIN
+  SET count = 0
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  SET "#abilitiesread" = "0"
+  WHILE ("%#abilities%" > 0) BEGIN
+    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x38)) "#e"
+    SET count += "%#e%"
+    SET "#abilitiesread" += "1"
+    SET "#abilities" -= "1"
+  END
+  PATCH_PRINT ~Counted %count% effects~
+END
+
+DEFINE_PATCH_FUNCTION COUNT_SPELL_EFFECTS RET count BEGIN
+  SET count = 0
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  SET "#abilitiesread" = "0"
+  WHILE ("%#abilities%" > 0) BEGIN
+    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x28)) "#e"
+    SET count += "%#e%"
+    SET "#abilitiesread" += "1"
+    SET "#abilities" -= "1"
+  END
+  PATCH_PRINT ~Counted %count% effects~
 END
 
 DEFINE_PATCH_MACRO ~ADD_PURCHASED_ITEM~ BEGIN
@@ -10062,17 +10090,18 @@ COPY_EXISTING ~%tutu_var%ax1h07.itm~ ~override~
   SAY UNIDENTIFIED_DESC @58 
   SAY DESC @61 
   SAY 0x16e @601
-  LAUNCH_PATCH_MACRO COUNT_EFFECTS
+  // LAUNCH_PATCH_MACRO COUNT_EFFECTS
+  LAUNCH_PATCH_FUNCTION COUNT_ITEM_EFFECTS RET "#effects" = count END
   READ_LONG 0x6a "effectsoffset"
   FOR (i = "%#effects%"; i; --i) BEGIN
-	READ_SHORT ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%"))) "opcode"
-    PATCH_IF ("%opcode%" = "60") THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "50"
-	END
-	READ_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0xe) "olddur"
-	  PATCH_IF ("%olddur%" = 100) THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0xe) "60"
-	END
+    READ_SHORT ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%"))) "opcode"
+      PATCH_IF ("%opcode%" = "60") THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "50"
+    END
+    READ_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0xe) "olddur"
+      PATCH_IF ("%olddur%" = 100) THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0xe) "60"
+    END
   END
   BUT_ONLY
 
@@ -12107,13 +12136,14 @@ COPY_EXISTING ~%tutu_var%potn12.itm~ ~override~
   END
   BUT_ONLY
   
-COPY_EXISTING ~%tutu_var%potn13.itm~ ~override~         
-  SAY DESC @229
-  WRITE_LONG 0x34 "1000"
-  WRITE_LONG 0xc6 "2"
-  WRITE_LONG 0xce "0"
-  WRITE_LONG 0x12a "6"
-  BUT_ONLY
+// TODO:
+// COPY_EXISTING ~%tutu_var%potn13.itm~ ~override~         
+//   SAY DESC @229
+//   WRITE_LONG 0x34 "1000"
+//   WRITE_LONG 0xc6 "2"
+//   WRITE_LONG 0xce "0"
+//   WRITE_LONG 0x12a "6"
+//   BUT_ONLY
   
 COPY_EXISTING ~%tutu_var%%bgt_var%potn14.itm~ ~override~         
   SAY DESC @230
@@ -12311,17 +12341,19 @@ COPY_EXISTING ~%tutu_var%potn25.itm~ ~override~
   WRITE_ASCII 0x76 ~ipotn08~
   BUT_ONLY
   
-COPY_EXISTING ~%tutu_var%potn26.itm~ ~override~         
-  SAY DESC @240
-  WRITE_LONG 0x34 "1100"
-  WRITE_LONG 0xfe "1"
-  BUT_ONLY
+// TODO:
+// COPY_EXISTING ~%tutu_var%potn26.itm~ ~override~         
+//   SAY DESC @240
+//   WRITE_LONG 0x34 "1100"
+//   WRITE_LONG 0xfe "1"
+//   BUT_ONLY
   
-COPY_EXISTING ~%tutu_var%potn27.itm~ ~override~         
-  SAY DESC @241
-  WRITE_LONG 0x34 "1000"
-  WRITE_LONG 0x15e "2"
-  BUT_ONLY
+// TODO:
+// COPY_EXISTING ~%tutu_var%potn27.itm~ ~override~         
+//   SAY DESC @241
+//   WRITE_LONG 0x34 "1000"
+//   WRITE_LONG 0x15e "2"
+//   BUT_ONLY
   
 COPY_EXISTING ~%tutu_var%potn28.itm~ ~override~         
   SAY DESC @242 
@@ -15665,13 +15697,14 @@ COPY_EXISTING ~%tutu_var%wolfva1.itm~ ~override~
   LAUNCH_PATCH_MACRO DELETE_ITEM_EFFECT
   BUT_ONLY
 
-COPY_EXISTING ~%tutu_var%wolfwi1.itm~ ~override~
-  WRITE_SHORT 0x80 "11"
-  WRITE_SHORT 0x86 "0"
-  WRITE_BYTE 0xad "1"
-  WRITE_BYTE 0xdd "1"
-  WRITE_BYTE 0x10d "1"
-  BUT_ONLY
+// TODO:
+// COPY_EXISTING ~%tutu_var%wolfwi1.itm~ ~override~
+//   WRITE_SHORT 0x80 "11"
+//   WRITE_SHORT 0x86 "0"
+//   WRITE_BYTE 0xad "1"
+//   WRITE_BYTE 0xdd "1"
+//   WRITE_BYTE 0x10d "1"
+//   BUT_ONLY
 
 COPY_EXISTING ~%tutu_var%wolfwi2.itm~ ~override~
   WRITE_SHORT 0x84 "6"
@@ -16002,102 +16035,103 @@ COPY_EXISTING ~spin101.spl~ ~override~
   WRITE_LONG 0xb6 "1"
   BUT_ONLY
   
-COPY_EXISTING ~spin102.spl~ ~override~        
-  SET "opcode_to_delete" = "-1"
-  LAUNCH_PATCH_MACRO DELETE_SPELL_EFFECT
-  SET "#effectstotal" = "0"
-  SET "#abilitiestotal" = "10"
-  SET "type" = "1"
-  SET "icon_location" = "4"
-  SPRINT "icon" ~sppr212b~
-  SET "target" = "1"
-  SET "range" = "1"
-  SET "casting_speed" = "0"
-  SET "projectile" = "1"
-  LAUNCH_PATCH_MACRO ADD_SPELL_HEADER
-  SET "baseduration" = "12"
-  SET "bonusduration" = "6"
-  SET "#addedeffects" = "0"
-  WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
-    SET "opcode" = "141"
-    SET "target" = "2"
-    SET "power" = "2"
-    SET "parameter1" = "0"
-    SET "parameter2" = "2"
-    SET "timing" = "1"
-    SET "resist_dispel" = "3"
-    SET "duration" = "0"
-    SET "probability1" = "100"
-    SET "probability2" = "0"
-    SPRINT "resource" ~~
-    SET "dicenumber" = "0"
-    SET "dicesize" = "0"
-    SET "savingthrow" = "0"
-    SET "savebonus" = "0"
-    SET "header" = ("1" + "%#addedeffects%")
-    LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
-    SET "#addedeffects" += "1"
-  END
-  SET "#addedeffects" = "0"
-  WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
-    SET "opcode" = "50"
-    SET "target" = "2"
-    SET "power" = "2"
-    SET "parameter1" = "0xffff3200"
-    SET "parameter2" = "0x001e0000"
-    SET "resist_dispel" = "3"
-    SET "duration" = "1"
-    SET "header" = ("1" + "%#addedeffects%")
-    LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
-    SET "#addedeffects" += "1"
-  END
-  SET "#addedeffects" = "0"
-  WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
-    SET "opcode" = "11"
-    SET "target" = "2"
-    SET "power" = "2"
-    SET "timing" = "1"
-    SET "resist_dispel" = "3"
-    SET "header" = ("1" + "%#addedeffects%")
-    LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
-    SET "#addedeffects" += "1"
-  END
-  SET "#addedeffects" = "0"
-  WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
-    SET "opcode" = "164"
-    SET "target" = "2"
-    SET "power" = "2"
-    SET "timing" = "1"
-    SET "resist_dispel" = "3"
-    SET "header" = ("1" + "%#addedeffects%")
-    LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
-    SET "#addedeffects" += "1"
-  END
-  SET "#addedeffects" = "0"
-  WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
-    SET "opcode" = "142"
-    SET "target" = "2"
-    SET "power" = "2"
-    SET "parameter2" = "30"
-    SET "resist_dispel" = "3"
-    SET "duration" = ("%baseduration%" + ("%bonusduration%" * ("%#addedeffects%" + 1)))
-    SET "header" = ("1" + "%#addedeffects%")
-    LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
-    SET "#addedeffects" += "1"
-  END
-  SET "#addedeffects" = "0"
-  WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
-    SET "opcode" = "101"
-    SET "target" = "2"
-    SET "power" = "2"
-    SET "parameter2" = "25"
-    SET "resist_dispel" = "3"
-    SET "duration" = ("%baseduration%" + ("%bonusduration%" * ("%#addedeffects%" + 1)))
-    SET "header" = ("1" + "%#addedeffects%")
-    LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
-    SET "#addedeffects" += "1"
-  END
-  BUT_ONLY
+// TODO:
+// COPY_EXISTING ~spin102.spl~ ~override~        
+//   SET "opcode_to_delete" = "-1"
+//   LAUNCH_PATCH_MACRO DELETE_SPELL_EFFECT
+//   SET "#effectstotal" = "0"
+//   SET "#abilitiestotal" = "10"
+//   SET "type" = "1"
+//   SET "icon_location" = "4"
+//   SPRINT "icon" ~sppr212b~
+//   SET "target" = "1"
+//   SET "range" = "1"
+//   SET "casting_speed" = "0"
+//   SET "projectile" = "1"
+//   LAUNCH_PATCH_MACRO ADD_SPELL_HEADER
+//   SET "baseduration" = "12"
+//   SET "bonusduration" = "6"
+//   SET "#addedeffects" = "0"
+//   WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
+//     SET "opcode" = "141"
+//     SET "target" = "2"
+//     SET "power" = "2"
+//     SET "parameter1" = "0"
+//     SET "parameter2" = "2"
+//     SET "timing" = "1"
+//     SET "resist_dispel" = "3"
+//     SET "duration" = "0"
+//     SET "probability1" = "100"
+//     SET "probability2" = "0"
+//     SPRINT "resource" ~~
+//     SET "dicenumber" = "0"
+//     SET "dicesize" = "0"
+//     SET "savingthrow" = "0"
+//     SET "savebonus" = "0"
+//     SET "header" = ("1" + "%#addedeffects%")
+//     LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
+//     SET "#addedeffects" += "1"
+//   END
+//   SET "#addedeffects" = "0"
+//   WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
+//     SET "opcode" = "50"
+//     SET "target" = "2"
+//     SET "power" = "2"
+//     SET "parameter1" = "0xffff3200"
+//     SET "parameter2" = "0x001e0000"
+//     SET "resist_dispel" = "3"
+//     SET "duration" = "1"
+//     SET "header" = ("1" + "%#addedeffects%")
+//     LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
+//     SET "#addedeffects" += "1"
+//   END
+//   SET "#addedeffects" = "0"
+//   WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
+//     SET "opcode" = "11"
+//     SET "target" = "2"
+//     SET "power" = "2"
+//     SET "timing" = "1"
+//     SET "resist_dispel" = "3"
+//     SET "header" = ("1" + "%#addedeffects%")
+//     LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
+//     SET "#addedeffects" += "1"
+//   END
+//   SET "#addedeffects" = "0"
+//   WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
+//     SET "opcode" = "164"
+//     SET "target" = "2"
+//     SET "power" = "2"
+//     SET "timing" = "1"
+//     SET "resist_dispel" = "3"
+//     SET "header" = ("1" + "%#addedeffects%")
+//     LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
+//     SET "#addedeffects" += "1"
+//   END
+//   SET "#addedeffects" = "0"
+//   WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
+//     SET "opcode" = "142"
+//     SET "target" = "2"
+//     SET "power" = "2"
+//     SET "parameter2" = "30"
+//     SET "resist_dispel" = "3"
+//     SET "duration" = ("%baseduration%" + ("%bonusduration%" * ("%#addedeffects%" + 1)))
+//     SET "header" = ("1" + "%#addedeffects%")
+//     LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
+//     SET "#addedeffects" += "1"
+//   END
+//   SET "#addedeffects" = "0"
+//   WHILE ("%#addedeffects%" < "%#abilities%") BEGIN
+//     SET "opcode" = "101"
+//     SET "target" = "2"
+//     SET "power" = "2"
+//     SET "parameter2" = "25"
+//     SET "resist_dispel" = "3"
+//     SET "duration" = ("%baseduration%" + ("%bonusduration%" * ("%#addedeffects%" + 1)))
+//     SET "header" = ("1" + "%#addedeffects%")
+//     LAUNCH_PATCH_MACRO ADD_SPELL_EFFECT
+//     SET "#addedeffects" += "1"
+//   END
+//   BUT_ONLY
   
 COPY_EXISTING ~spin103.spl~ ~override~  
   WRITE_SHORT 0x84 "2"
@@ -29309,25 +29343,26 @@ COPY_EXISTING ~spwi412.spl~ ~override~
   SAY UNIDENTIFIED_DESC @798
   READ_BYTE 0x1f "spwi412"
   WRITE_BYTE 0x1f ("spwi412" BOR "0b00010000")
-  LAUNCH_PATCH_MACRO COUNT_EFFECTS
+  // LAUNCH_PATCH_MACRO COUNT_EFFECTS
+  LPF COUNT_SPELL_EFFECTS RET "#effects" = count END
   READ_LONG 0x6a "effectsoffset"
   FOR (i = "%#effects%"; i; --i) BEGIN
-	READ_SHORT ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%"))) "opcode"
-    PATCH_IF ("%opcode%" = "33") THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
-	END
-	PATCH_IF ("%opcode%" = "34") THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
-	END
-	PATCH_IF ("%opcode%" = "35") THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
-	END
-	PATCH_IF ("%opcode%" = "36") THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
-	END
-	PATCH_IF ("%opcode%" = "37") THEN BEGIN
-	  WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
-	END
+    READ_SHORT ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%"))) "opcode"
+      PATCH_IF ("%opcode%" = "33") THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
+    END
+    PATCH_IF ("%opcode%" = "34") THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
+    END
+    PATCH_IF ("%opcode%" = "35") THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
+    END
+    PATCH_IF ("%opcode%" = "36") THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
+    END
+    PATCH_IF ("%opcode%" = "37") THEN BEGIN
+      WRITE_LONG ("%effectsoffset%" + (0x30 * ("%#effects%" - "%i%")) + 0x4) "-2"
+    END
   END
   BUT_ONLY
   
@@ -37144,6 +37179,8 @@ COPY_EXISTING ~%tutu_var%wolfwi.cre~ ~override~
   WRITE_ASCII_TERMINATE SCRIPT_DEFAULT ~~
   REMOVE_CRE_ITEM ~%tutu_var%wolfwi1~
   BUT_ONLY
+
+// TODO: add the other winter wolves
 
 // Worgs //
 
