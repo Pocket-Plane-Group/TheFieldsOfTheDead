@@ -1,0 +1,15 @@
+IF
+	Global("Chapter","GLOBAL",1)
+THEN
+	RESPONSE #100
+		BreakInstants()
+		IncrementChapter("Chptxt2")
+		EraseJournalEntry(27182) // Jaheira and Khalid Jaheira and Khalid would have me accompany them to Nashkel.
+		EraseJournalEntry(27518) // Xzar and Montaron Xzar and Montaron wish me to travel to Nashkel.
+		AddJournalEntry(15836,INFO)
+		EraseJournalEntry(31438) // Find Gorion  Gorion, my foster father, has informed me that we must immediately leave Candlekeep and set out on a journey. He has given me some gold, and I must purchase supplies for the road, including weapons and armor.
+		EraseJournalEntry(31439) // Go to the Friendly Arm Inn  With Gorion slain, I must continue onward by myself. My first destination should be the Friendly Arm Inn to the north. Gorion claims that his former associates Khalid and Jaheira will be there waiting for me.
+		EraseJournalEntry(31440) // Meet with Khalid & Jaheira  Safe at last at the Friendly Arm Inn! My next step should be to find and introduce myself to Khalid and Jaheira, friends of Gorion. They can give me some advice as to what to do next.
+		EraseJournalEntry(31441) // Travel to Nashkel  As I have little else to do and few allies, I should devote some time to investigating the cause of the iron shortage in the region. My next stop should be the town of Nashkel to the south.
+		AddJournalEntry(31442,QUEST)
+END

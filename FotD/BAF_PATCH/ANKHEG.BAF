@@ -1,0 +1,21 @@
+IF
+	See(NearestEnemyOf(Myself))
+	Global("AnkhegSpit","LOCALS",0)
+	HPLT(Myself,20)
+THEN
+	RESPONSE #100
+		SetGlobal("AnkhegSpit","LOCALS",1)
+		SelectWeaponAbility(SLOT_WEAPON,0)
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		SelectWeaponAbility(SLOT_WEAPON1,0)
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+

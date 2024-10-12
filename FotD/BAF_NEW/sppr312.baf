@@ -1,0 +1,521 @@
+IF
+	CheckStatGT(Player1,19,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStatGT(Player2,19,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStatGT(Player3,19,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStatGT(Player4,19,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStatGT(Player5,19,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStatGT(Player6,19,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,18,STR)
+	CheckStat(Player1,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_6)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,18,STR)
+	CheckStat(Player2,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_6)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,18,STR)
+	CheckStat(Player3,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_6)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,18,STR)
+	CheckStat(Player4,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_6)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player5,18,STR)
+	CheckStat(Player5,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_6)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,18,STR)
+	CheckStat(Player6,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_6)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,18,STR)
+	CheckStatGT(Player1,90,STREXTRA)
+	CheckStatLT(Player1,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_5)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,18,STR)
+	CheckStatGT(Player2,90,STREXTRA)
+	CheckStatLT(Player2,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_5)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,18,STR)
+	CheckStatGT(Player3,90,STREXTRA)
+	CheckStatLT(Player3,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_5)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,18,STR)
+	CheckStatGT(Player4,90,STREXTRA)
+	CheckStatLT(Player4,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_5)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player5,18,STR)
+	CheckStatGT(Player5,90,STREXTRA)
+	CheckStatLT(Player5,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_5)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,18,STR)
+	CheckStatGT(Player6,90,STREXTRA)
+	CheckStatLT(Player6,100,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_5)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,18,STR)
+	CheckStatGT(Player1,75,STREXTRA)
+	CheckStatLT(Player1,91,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_4)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,18,STR)
+	CheckStatGT(Player2,75,STREXTRA)
+	CheckStatLT(Player2,91,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_4)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,18,STR)
+	CheckStatGT(Player3,75,STREXTRA)
+	CheckStatLT(Player3,91,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_4)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,18,STR)
+	CheckStatGT(Player4,75,STREXTRA)
+	CheckStatLT(Player4,91,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_4)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player5,18,STR)
+	CheckStatGT(Player5,75,STREXTRA)
+	CheckStatLT(Player5,91,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_4)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,18,STR)
+	CheckStatGT(Player6,75,STREXTRA)
+	CheckStatLT(Player6,91,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_4)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,18,STR)
+	CheckStatGT(Player1,0,STREXTRA)
+	CheckStatLT(Player1,76,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_3)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,18,STR)
+	CheckStatGT(Player2,0,STREXTRA)
+	CheckStatLT(Player2,76,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_3)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,18,STR)
+	CheckStatGT(Player3,0,STREXTRA)
+	CheckStatLT(Player3,76,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_3)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,18,STR)
+	CheckStatGT(Player4,0,STREXTRA)
+	CheckStatLT(Player4,76,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_3)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player5,18,STR)
+	CheckStatGT(Player5,0,STREXTRA)
+	CheckStatLT(Player5,76,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_3)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,18,STR)
+	CheckStatGT(Player6,0,STREXTRA)
+	CheckStatLT(Player6,76,STREXTRA)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_3)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,18,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_2)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,18,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_2)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,18,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_2)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,18,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_2)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player5,18,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_2)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,18,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_2)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,17,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,17,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,17,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,17,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	CheckStat(Player5,17,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,17,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player1,16,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player2,16,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player3,16,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player4,16,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	CheckStat(Player5,16,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_1)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+IF
+	CheckStat(Player6,16,STR)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ForceSpell(Myself,STRENGTH_OF_ONE_7)
+		ChangeAIScript("BLANK",GENERAL)
+		SetInterrupt(TRUE)
+END
+
+

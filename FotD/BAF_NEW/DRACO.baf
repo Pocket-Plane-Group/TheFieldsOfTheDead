@@ -1,0 +1,148 @@
+IF
+  See(NearestEnemyOf(Myself))
+  !Heard([EVILCUTOFF],11)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    Shout(11)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],11)
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("DracoBreath","LOCALS")
+  Global("BreathWeapon","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DracoBreath","LOCALS",12)
+    SetGlobal("BreathWeapon","LOCALS",1)
+    ReallyForceSpell(NearestEnemyOf(Myself),ACID_BREATH)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("DracoBreath","LOCALS")
+  Global("BreathWeapon","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DracoBreath","LOCALS",12)
+    SetGlobal("BreathWeapon","LOCALS",2)
+    ReallyForceSpell(NearestEnemyOf(Myself),ACID_BREATH)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("DracoBreath","LOCALS")
+  Global("BreathWeapon","LOCALS",2)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("DracoBreath","LOCALS",12)
+    SetGlobal("BreathWeapon","LOCALS",3)
+    ReallyForceSpell(NearestEnemyOf(Myself),ACID_BREATH)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLIND)
+  !StateCheck(NearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #10
+    SetInterrupt(FALSE)
+    SelectWeaponAbility(SLOT_WEAPON0,0)
+    AttackOneRound(NearestEnemyOf(Myself))
+    SetInterrupt(TRUE)
+  RESPONSE #90
+    Continue()
+END
+
+IF
+  See(SecondNearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLIND)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #5
+    SetInterrupt(FALSE)
+    SelectWeaponAbility(SLOT_WEAPON0,0)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+    SetInterrupt(TRUE)
+  RESPONSE #95
+    Continue()
+END
+
+IF
+  See(ThirdNearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLIND)
+  !StateCheck(ThirdNearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #5
+    SetInterrupt(FALSE)
+    SelectWeaponAbility(SLOT_WEAPON0,0)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+    SetInterrupt(TRUE)
+  RESPONSE #95
+    Continue()
+END
+
+IF
+  See(FourthNearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLIND)
+  !StateCheck(FourthNearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #5
+    SetInterrupt(FALSE)
+    SelectWeaponAbility(SLOT_WEAPON0,0)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+    SetInterrupt(TRUE)
+  RESPONSE #95
+    Continue()
+END
+
+IF
+  See(FifthNearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLIND)
+  !StateCheck(FifthNearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #5
+    SetInterrupt(FALSE)
+    SelectWeaponAbility(SLOT_WEAPON0,0)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+    SetInterrupt(TRUE)
+  RESPONSE #95
+    Continue()
+END
+
+IF
+  See(SixthNearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLIND)
+  !StateCheck(SixthNearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+  RESPONSE #5
+    SetInterrupt(FALSE)
+    SelectWeaponAbility(SLOT_WEAPON0,0)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+    SetInterrupt(TRUE)
+  RESPONSE #95
+    Continue()
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #45
+    SelectWeaponAbility(SLOT_WEAPON1,0)
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+  RESPONSE #45
+    SelectWeaponAbility(SLOT_WEAPON2,0)
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+  RESPONSE #10
+    Continue()
+END
+

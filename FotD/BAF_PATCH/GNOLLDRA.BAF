@@ -1,0 +1,9 @@
+IF
+	AttackedBy([PC],DEFAULT)
+	Global("HelpDrizzt","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("HelpDrizzt","GLOBAL",1)
+END
+
+

@@ -1,0 +1,29 @@
+IF
+  See(NearestEnemyOf(Myself))
+  !Heard([EVILCUTOFF],9)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    VerbalConstant(Myself,BATTLE_CRY)
+    Shout(9)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],9)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    MoveToObject(LastHeardBy(Myself))
+    SetInterrupt(TRUE)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

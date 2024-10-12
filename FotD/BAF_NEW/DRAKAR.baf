@@ -1,0 +1,581 @@
+IF
+  HaveSpell(CLERIC_CURE_MODERATE_WOUNDS)
+  HPPercentLT(Myself,50)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,CLERIC_CURE_MODERATE_WOUNDS)
+END
+
+IF
+  HaveSpell(CLERIC_CURE_MODERATE_WOUNDS)
+  Heard([EVILCUTOFF],2)
+  !CheckStat(LastHeardBy(Myself),1,MINORGLOBE)
+  HPPercentGT(Myself,50)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(LastHeardBy(Myself),CLERIC_CURE_MODERATE_WOUNDS)
+END
+
+IF
+  HaveSpell(CLERIC_CURE_LIGHT_WOUNDS)
+  HPPercentLT(Myself,50)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,CLERIC_CURE_LIGHT_WOUNDS)
+END
+
+IF
+  HaveSpell(CLERIC_CURE_LIGHT_WOUNDS)
+  Heard([EVILCUTOFF],2)
+  !CheckStat(LastHeardBy(Myself),1,MINORGLOBE)
+  HPPercentGT(Myself,50)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(LastHeardBy(Myself),CLERIC_CURE_LIGHT_WOUNDS)
+END
+
+IF
+  HasItem("SCPR260",Myself)  // ~Cure Moderate Wounds~
+  HPPercentLT(Myself,50)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    UseItem("SCPR260",Myself)  // ~Cure Moderate Wounds~
+END
+
+IF
+  HasItem("SCPR103",Myself)  // ~Cure Light Wounds~
+  HPPercentLT(Myself,50)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    UseItem("SCPR260",Myself)  // ~Cure Moderate Wounds~
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !Heard([EVILCUTOFF],30)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    Shout(30)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],30)
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+THEN
+  RESPONSE #100
+    Shout(30)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],30)
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+THEN
+  RESPONSE #100
+    Shout(30)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],30)
+  Exists(LastHeardBy(LastHeardBy(Myself)))
+THEN
+  RESPONSE #100
+    Shout(30)
+    MoveToObject(LastHeardBy(LastHeardBy(Myself)))
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],30)
+THEN
+  RESPONSE #100
+    Shout(30)
+    MoveToObject(LastHeardBy(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SeeEnemy","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SeeEnemy","LOCALS",1)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SEBlock1","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock1","LOCALS",0)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SEBlock2","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock2","LOCALS",0)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("Search","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("Search","LOCALS",0)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  Global("SeeEnemy","LOCALS",1)
+  Global("SEBlock1","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock1","LOCALS",1)
+    SetGlobalTimer("SearchTime","LOCALS",60)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  GlobalTimerExpired("SearchTime","LOCALS")
+  Global("SEBlock2","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock2","LOCALS",1)
+    SetGlobal("Search","LOCALS",1)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  Global("SeeEnemy","LOCALS",1)
+  Global("Search","LOCALS",0)
+THEN
+  RESPONSE #40
+    RandomWalkContinuous()
+  RESPONSE #60
+    RandomWalk()
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+END
+
+IF
+  HasItem("POTN46",Myself)  // ~Potion of Stone Form~
+  See(NearestEnemyOf(Myself))
+  CheckStatLT(Myself,17,DEX)
+  CheckStatGT(Myself,3,ARMORCLASS)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    UseItem("POTN46",Myself)  // ~Potion of Stone Form~
+END
+
+IF
+  HaveSpell(CLERIC_REMOVE_PARALYSIS)
+  See(Nearest([EVILCUTOFF]))
+  General(Nearest([EVILCUTOFF]),HUMANOID)
+  StateCheck(Nearest([EVILCUTOFF]),STATE_STUNNED)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Nearest([EVILCUTOFF]),CLERIC_REMOVE_PARALYSIS)
+END
+
+IF
+  HaveSpell(CLERIC_REMOVE_PARALYSIS)
+  See(SecondNearest([EVILCUTOFF]))
+  General(SecondNearest([EVILCUTOFF]),HUMANOID)
+  StateCheck(SecondNearest([EVILCUTOFF]),STATE_STUNNED)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(SecondNearest([EVILCUTOFF]),CLERIC_REMOVE_PARALYSIS)
+END
+
+IF
+  HaveSpell(CLERIC_REMOVE_PARALYSIS)
+  See(ThirdNearest([EVILCUTOFF]))
+  General(ThirdNearest([EVILCUTOFF]),HUMANOID)
+  StateCheck(ThirdNearest([EVILCUTOFF]),STATE_STUNNED)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(ThirdNearest([EVILCUTOFF]),CLERIC_REMOVE_PARALYSIS)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(Nearest([EVILCUTOFF]))
+  StateCheck(Nearest([EVILCUTOFF]),STATE_CHARMED)
+  !Range(Nearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Nearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(SecondNearest([EVILCUTOFF]))
+  StateCheck(SecondNearest([EVILCUTOFF]),STATE_CHARMED)
+  !Range(SecondNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(SecondNearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(ThirdNearest([EVILCUTOFF]))
+  StateCheck(ThirdNearest([EVILCUTOFF]),STATE_CHARMED)
+  !Range(ThirdNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(ThirdNearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(Nearest([EVILCUTOFF]))
+  StateCheck(Nearest([EVILCUTOFF]),STATE_SLOWED)
+  !Range(Nearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell([EVILCUTOFF],CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(SecondNearest([EVILCUTOFF]))
+  StateCheck(SecondNearest([EVILCUTOFF]),STATE_SLOWED)
+  !Range(SecondNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(SecondNearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(ThirdNearest([EVILCUTOFF]))
+  StateCheck(ThirdNearest([EVILCUTOFF]),STATE_SLOWED)
+  !Range(ThirdNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(ThirdNearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(Nearest([EVILCUTOFF]))
+  StateCheck(Nearest([EVILCUTOFF]),STATE_FEEBLEMINDED)
+  !Range(Nearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Nearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(SecondNearest([EVILCUTOFF]))
+  StateCheck(SecondNearest([EVILCUTOFF]),STATE_FEEBLEMINDED)
+  !Range(SecondNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(SecondNearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(ThirdNearest([EVILCUTOFF]))
+  StateCheck(ThirdNearest([EVILCUTOFF]),STATE_FEEBLEMINDED)
+  !Range(ThirdNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(ThirdNearest([EVILCUTOFF]),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(NearestEnemyOf(Myself))
+  StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !Range(Nearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(NearestEnemyOf(Myself),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(SecondNearestEnemyOf(Myself))
+  StateCheck(SecondNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !Range(SecondNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(SecondNearestEnemyOf(Myself),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(ThirdNearestEnemyOf(Myself))
+  StateCheck(ThirdNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !Range(ThirdNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(ThirdNearestEnemyOf(Myself),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(NearestEnemyOf(Myself))
+  CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+  !Range(Nearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(NearestEnemyOf(Myself),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(SecondNearestEnemyOf(Myself))
+  CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+  !Range(SecondNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(SecondNearestEnemyOf(Myself),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DISPEL_MAGIC)
+  See(ThirdNearestEnemyOf(Myself))
+  CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+  !Range(ThirdNearest([EVILCUTOFF]),18)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(ThirdNearestEnemyOf(Myself),CLERIC_DISPEL_MAGIC)
+END
+
+IF
+  HaveSpell(CLERIC_DRAW_UPON_HOLY_MIGHT)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_DRAWUPONHOLYMIGHT)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,CLERIC_DRAW_UPON_HOLY_MIGHT)
+END
+
+IF
+  HaveSpell(CLERIC_AID)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_AID)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,CLERIC_AID)
+END
+
+IF
+  HaveSpell(CLERIC_BLESS)
+  !StateCheck(Nearest([EVILCUTOFF]),STATE_BLESS)
+  !CheckStat(Nearest([EVILCUTOFF]),1,MINORGLOBE)
+  See(NearestEnemyOf(Myself))
+  See(Nearest([EVILCUTOFF]))
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(LastSeenBy(Myself),CLERIC_BLESS)
+END
+
+IF
+  HaveSpell(CLERIC_BLESS)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_BLESS)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,CLERIC_BLESS)
+END
+
+IF
+  HaveSpell(CLERIC_STRENGTH_OF_STONE)
+  See(NearestEnemyOf(Myself))
+  CheckStatLT(Myself,18,STR)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,CLERIC_STRENGTH_OF_STONE)
+END
+
+IF
+  StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(TenthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(NinthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(EighthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(SeventhNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(SixthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(FifthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(FourthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(ThirdNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  See(LastSeenBy(Myself))
+THEN
+  RESPONSE #10
+    EquipMostDamagingMelee()
+    MoveToObject(LastSeenBy(Myself))
+    AttackReevaluate(LastSeenBy(Myself),15)
+  RESPONSE #90
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

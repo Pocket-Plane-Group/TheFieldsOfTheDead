@@ -1,0 +1,121 @@
+IF
+	See(Player1)
+	Global("Player1Paralyze","LOCALS",0)
+	Range(Player1,20)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Player1,TANARI_PARALYZE)
+		SetGlobal("Player1Paralyze","LOCALS",1)
+END
+
+IF
+	See(Player2)
+	Global("Player2Paralyze","LOCALS",0)
+	Range(Player2,20)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Player2,TANARI_PARALYZE)
+		SetGlobal("Player2Paralyze","LOCALS",1)
+END
+
+IF
+	See(Player3)
+	Global("Player3Paralyze","LOCALS",0)
+	Range(Player3,20)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Player3,TANARI_PARALYZE)
+		SetGlobal("Player3Paralyze","LOCALS",1)
+END
+
+IF
+	See(Player4)
+	Global("Player4Paralyze","LOCALS",0)
+	Range(Player4,20)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Player4,TANARI_PARALYZE)
+		SetGlobal("Player4Paralyze","LOCALS",1)
+END
+
+IF
+	See(Player5)
+	Global("Player5Paralyze","LOCALS",0)
+	Range(Player5,20)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Player5,TANARI_PARALYZE)
+		SetGlobal("Player5Paralyze","LOCALS",1)
+END
+
+IF
+	See(Player6)
+	Global("Player6Paralyze","LOCALS",0)
+	Range(Player6,20)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Player6,TANARI_PARALYZE)
+		SetGlobal("Player6Paralyze","LOCALS",1)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("NabassuSilence","LOCALS")
+	!StateCheck(NearestEnemyOf(Myself),STATE_SILENCED)
+THEN
+	RESPONSE #100
+		ForceSpell(NearestEnemyOf(Myself),TANARI_SILENCE)
+		SetGlobalTimer("NabassuSilence","LOCALS",9)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!Range(NearestEnemyOf(Myself),10)
+	!GlobalTimerNotExpired("NabassuTeleport","LOCALS")
+THEN
+	RESPONSE #100
+		ForceSpell(NearestEnemyOf(Myself),TANARI_TELEPORT)
+		SetGlobalTimer("NabassuTeleport","LOCALS",9)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!GlobalTimerNotExpired("NabassuTouch","LOCALS")
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,WIZARD_VAMPIRIC_TOUCH)
+		SetGlobalTimer("NabassuTouch","LOCALS",9)
+		Continue()
+END
+
+IF
+	HasItem("SPWI314B",Myself)
+THEN
+	RESPONSE #100
+		AttackOneRound(NearestEnemyOf(Myself))
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	StateCheck(NearestEnemyOf(Myself),STATE_STUNNED)
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	ActionListEmpty()
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	True()
+THEN
+	RESPONSE #100
+		NoAction()
+END
+
+

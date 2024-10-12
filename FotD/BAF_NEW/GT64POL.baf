@@ -1,0 +1,50 @@
+IF
+  Entered([ANYONE])
+THEN
+  RESPONSE #100
+    DisplayString(LastTrigger,14381)  // ~Trap Sprung~ [AMB_D05C]
+    ForceSpell(LastTrigger,WIZARD_POLYMORPH_OTHER)
+END
+
+IF
+  Disarmed(Player1)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player2)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player3)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player4)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player5)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player6)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+

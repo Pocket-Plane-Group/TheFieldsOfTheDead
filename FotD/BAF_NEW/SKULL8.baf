@@ -1,0 +1,9 @@
+IF
+  HitBy([ANYONE],CRUSHING)
+THEN
+  RESPONSE #100
+    ReallyForceSpell(Myself,SKULLTRAP_8)
+    Wait(1)
+    Kill(Myself)
+END
+

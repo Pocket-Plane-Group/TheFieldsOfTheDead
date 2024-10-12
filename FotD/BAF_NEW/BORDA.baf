@@ -1,0 +1,436 @@
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SeeEnemy","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SeeEnemy","LOCALS",1)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SEBlock1","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock1","LOCALS",0)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("SEBlock2","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock2","LOCALS",0)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("Search","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("Search","LOCALS",0)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  Global("SeeEnemy","LOCALS",1)
+  Global("SEBlock1","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock1","LOCALS",1)
+    SetGlobalTimer("SearchTime","LOCALS",60)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  GlobalTimerExpired("SearchTime","LOCALS")
+  Global("SEBlock2","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("SEBlock2","LOCALS",1)
+    SetGlobal("Search","LOCALS",1)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  Global("SeeEnemy","LOCALS",1)
+  Global("Search","LOCALS",0)
+THEN
+  RESPONSE #40
+    RandomWalkContinuous()
+  RESPONSE #60
+    RandomWalk()
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_GHOST_ARMOR)
+  See(NearestEnemyOf(Myself))
+  CheckStatGT(Myself,3,ARMORCLASS)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,WIZARD_GHOST_ARMOR)
+END
+
+IF
+  HaveSpell(WIZARD_INVISIBILITY)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !StateCheck(Myself,STATE_IMPROVEDINVISIBILITY)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,WIZARD_INVISIBILITY)
+END
+
+IF
+  HaveSpell(WIZARD_MIRROR_IMAGE)
+  See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_MIRRORIMAGE)
+  !CheckStat(Myself,1,MINORGLOBE)
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(Myself,WIZARD_MIRROR_IMAGE)
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(TenthNearestEnemyOf(Myself),15)
+  !CheckStat(TenthNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(TenthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(TenthNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(TenthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(NinthNearestEnemyOf(Myself),15)
+  !CheckStat(NinthNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(NinthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(NinthNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(NinthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(EighthNearestEnemyOf(Myself),15)
+  !CheckStat(EighthNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(EighthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(EighthNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(EighthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(SeventhNearestEnemyOf(Myself),15)
+  !CheckStat(SeventhNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(SeventhNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(SeventhNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(SeventhNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(SixthNearestEnemyOf(Myself),15)
+  !CheckStat(SixthNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(SixthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(SixthNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(SixthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(FifthNearestEnemyOf(Myself),15)
+  !CheckStat(FifthNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(FifthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(FifthNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(FifthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(FourthNearestEnemyOf(Myself),15)
+  !CheckStat(FourthNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(FourthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(FourthNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(FourthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(ThirdNearestEnemyOf(Myself),15)
+  !CheckStat(ThirdNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(ThirdNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(ThirdNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(SecondNearestEnemyOf(Myself),15)
+  !CheckStat(SecondNearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  Range(NearestEnemyOf(Myself),15)
+  !CheckStat(NearestEnemyOf(Myself),100,RESISTFIRE)
+  !StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  HaveSpell(WIZARD_BURNING_HANDS)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  Range(LastSeenBy(Myself),15)
+  !CheckStat(LastSeenBy(Myself),100,RESISTFIRE)
+  !StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+  !CheckStat(LastSeenBy(Myself),1,MINORGLOBE)
+  See(LastSeenBy(Myself))
+  !GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("CastAndAttack","LOCALS",6)
+    Spell(LastSeenBy(Myself),WIZARD_BURNING_HANDS)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Range(NearestEnemyOf(Myself),3)
+  StateCheck(Myself,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  StateCheck(Myself,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    MoveToObject(NearestEnemyOf(Myself))
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  StateCheck(Myself,STATE_INVISIBLE)
+  !StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
+  Range(LastSeenBy(Myself),40)
+THEN
+  RESPONSE #100
+    MoveToObject(LastSeenBy(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("NotSeeGlobal","LOCALS",1)
+THEN
+  RESPONSE #100
+    SetGlobal("NotSeeGlobal","LOCALS",0)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  Delay(30)
+  Global("NotSeeGlobal","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("NotSeeGlobal","LOCALS",1)
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_INVISIBLE)
+  !GlobalTimerNotExpired("Stealth","LOCALS")
+  Global("NotSeeGlobal","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Stealth","LOCALS",9)
+    Hide()
+END
+
+IF
+  !See(NearestEnemyOf(Myself))
+  !StateCheck(Myself,STATE_INVISIBLE)
+  GlobalTimerNotExpired("Stealth","LOCALS")
+  !StateCheck(LastSeenBy(Myself),STATE_INVISIBLE)
+  Range(LastSeenBy(Myself),40)
+THEN
+  RESPONSE #100
+    MoveToObject(LastSeenBy(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Delay(9)
+  !Range(NearestEnemyOf(Myself),15)
+  !GlobalTimerNotExpired("Stealth","LOCALS")
+THEN
+  RESPONSE #100
+    RunAwayFromNoInterrupt(NearestEnemyOf(Myself),30)
+END
+
+IF
+  StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(TenthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(NinthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(EighthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(SeventhNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(SixthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(FifthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(FourthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(ThirdNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !HasWeaponEquiped(Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    EquipMostDamagingMelee()
+    SetInterrupt(TRUE)
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  See(LastSeenBy(Myself))
+THEN
+  RESPONSE #10
+    EquipMostDamagingMelee()
+    MoveToObject(LastSeenBy(Myself))
+    AttackReevaluate(LastSeenBy(Myself),15)
+  RESPONSE #90
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+  StateCheck(Myself,STATE_BLIND)
+THEN
+  RESPONSE #100
+    RandomWalk()
+END
+

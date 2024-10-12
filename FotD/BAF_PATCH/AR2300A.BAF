@@ -1,0 +1,13 @@
+IF
+	OnCreation()
+	Global("Chapter","GLOBAL",4)
+	Global("ElminsterSpawn","GLOBAL",0)
+	!Exists("ELMIN3")
+THEN
+	RESPONSE #100
+		CreateCreature("%tutu_var%ELMIN3",[3233.2533],0)
+		SetGlobal("ElminsterSpawn","GLOBAL",1)
+		Continue()
+END
+
+

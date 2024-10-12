@@ -1,0 +1,70 @@
+IF
+  See(NearestEnemyOf(Myself))
+  !Heard([EVILCUTOFF],40)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    VerbalConstant(Myself,BATTLE_CRY)
+    Shout(40)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],40)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(40)
+    MoveToObject(LastHeardBy(Myself))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],40)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(Myself)))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(40)
+    MoveToObject(LastHeardBy(LastHeardBy(Myself)))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],40)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(40)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],40)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(40)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+    SetInterrupt(TRUE)
+END
+

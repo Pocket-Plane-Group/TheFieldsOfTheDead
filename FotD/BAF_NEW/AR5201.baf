@@ -1,0 +1,8 @@
+IF
+  Global("EnteredFirewine","GLOBAL",0)
+THEN
+  RESPONSE #100
+    Wait(30)
+    SetGlobal("EnteredFirewine","GLOBAL",1)
+END
+

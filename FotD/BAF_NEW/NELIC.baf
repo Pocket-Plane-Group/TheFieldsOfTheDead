@@ -1,0 +1,295 @@
+IF
+  See(NearestEnemyOf(Myself))
+  !Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    VerbalConstant(Myself,BATTLE_CRY)
+    Shout(53)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(Myself))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(Myself)))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(LastHeardBy(Myself)))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+    SetInterrupt(TRUE)
+END
+
+IF
+  See(Nearest([ENEMY]))
+  !Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    VerbalConstant(Myself,BATTLE_CRY)
+    Shout(53)
+END
+
+IF
+  ActionListEmpty()
+  !See(Nearest([ENEMY]))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(Myself))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(Nearest([ENEMY]))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(Myself)))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(LastHeardBy(Myself)))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(Nearest([ENEMY]))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+    SetInterrupt(TRUE)
+END
+
+IF
+  ActionListEmpty()
+  !See(Nearest([ENEMY]))
+  Heard([EVILCUTOFF],53)
+  !GlobalTimerNotExpired("ShoutSeeEnemy2","LOCALS")
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    SetGlobalTimer("ShoutSeeEnemy2","LOCALS",30)
+    Shout(53)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+    SetInterrupt(TRUE)
+END
+
+IF
+  !HasWeaponEquiped(Myself)
+THEN
+  RESPONSE #100
+    SetInterrupt(FALSE)
+    EquipMostDamagingMelee()
+    SetInterrupt(TRUE)
+END
+
+IF
+  StateCheck(TenthNearest([ENEMY]),STATE_HELPLESS)
+  !Class(TenthNearest([ENEMY]),INNOCENT)
+  !Class(TenthNearest([ENEMY]),FLAMING_FIST)
+  See(TenthNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(NinthNearest([ENEMY]),STATE_HELPLESS)
+  !Class(NinthNearest([ENEMY]),INNOCENT)
+  !Class(NinthNearest([ENEMY]),FLAMING_FIST)
+  See(NinthNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(EighthNearest([ENEMY]),STATE_HELPLESS)
+  !Class(EighthNearest([ENEMY]),INNOCENT)
+  !Class(EighthNearest([ENEMY]),FLAMING_FIST)
+  See(EighthNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SeventhNearest([ENEMY]),STATE_HELPLESS)
+  !Class(SeventhNearest([ENEMY]),INNOCENT)
+  !Class(SeventhNearest([ENEMY]),FLAMING_FIST)
+  See(SeventhNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SixthNearest([ENEMY]),STATE_HELPLESS)
+  !Class(SixthNearest([ENEMY]),INNOCENT)
+  !Class(SixthNearest([ENEMY]),FLAMING_FIST)
+  See(SixthNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(FifthNearest([ENEMY]),STATE_HELPLESS)
+  !Class(FifthNearest([ENEMY]),INNOCENT)
+  !Class(FifthNearest([ENEMY]),FLAMING_FIST)
+  See(FifthNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(FourthNearest([ENEMY]),STATE_HELPLESS)
+  !Class(FourthNearest([ENEMY]),INNOCENT)
+  !Class(FourthNearest([ENEMY]),FLAMING_FIST)
+  See(FourthNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(ThirdNearest([ENEMY]),STATE_HELPLESS)
+  !Class(ThirdNearest([ENEMY]),INNOCENT)
+  !Class(ThirdNearest([ENEMY]),FLAMING_FIST)
+  See(ThirdNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(SecondNearest([ENEMY]),STATE_HELPLESS)
+  !Class(SecondNearest([ENEMY]),INNOCENT)
+  !Class(SecondNearest([ENEMY]),FLAMING_FIST)
+  See(SecondNearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  StateCheck(Nearest([ENEMY]),STATE_HELPLESS)
+  !Class(Nearest([ENEMY]),INNOCENT)
+  !Class(Nearest([ENEMY]),FLAMING_FIST)
+  See(Nearest([ENEMY]))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+  !Class(LastSeenBy(Myself),INNOCENT)
+  !Class(LastSeenBy(Myself),FLAMING_FIST)
+  !Range(LastSeenBy(Myself),5)
+  See(LastSeenBy(Myself))
+THEN
+  RESPONSE #10
+    EquipRanged()
+    AttackReevaluate(LastSeenBy(Myself),15)
+  RESPONSE #90
+    Continue()
+END
+
+IF
+  ActionListEmpty()
+  See(Nearest([ENEMY]))
+  !Class(Nearest([ENEMY]),INNOCENT)
+  !Class(Nearest([ENEMY]),FLAMING_FIST)
+  !Range(Nearest([ENEMY]),5)
+THEN
+  RESPONSE #100
+    EquipRanged()
+    AttackReevaluate(Nearest([ENEMY]),15)
+END
+
+IF
+  ActionListEmpty()
+  See(Nearest([ENEMY]))
+  !Class(Nearest([ENEMY]),INNOCENT)
+  !Class(Nearest([ENEMY]),FLAMING_FIST)
+  Range(Nearest([ENEMY]),5)
+THEN
+  RESPONSE #100
+    EquipMostDamagingMelee()
+    AttackReevaluate(Nearest([ENEMY]),15)
+END
+
+IF
+  StateCheck(Myself,STATE_BLIND)
+THEN
+  RESPONSE #100
+    RandomWalk()
+END
+

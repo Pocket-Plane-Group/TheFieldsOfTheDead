@@ -1,0 +1,10 @@
+IF
+	See(NearestEnemyOf(Myself))
+	Global("BanditShout","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("BanditShout","LOCALS",1)
+		Shout(1)
+END
+
+

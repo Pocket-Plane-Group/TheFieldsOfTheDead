@@ -1,0 +1,13 @@
+IF
+	Global("Chapter","GLOBAL",1)
+THEN
+	RESPONSE #100
+		StartMovie("NASHKELL")
+		BreakInstants()
+		IncrementChapter("Chptxt2")
+		EraseJournalEntry(27182) // Jaheira and Khalid Jaheira and Khalid would have me accompany them to Nashkel.
+		EraseJournalEntry(27518) // Xzar and Montaron Xzar and Montaron wish me to travel to Nashkel.
+		AddJournalEntry(15836,INFO)
+END
+
+

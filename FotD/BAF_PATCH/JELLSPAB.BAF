@@ -1,0 +1,50 @@
+IF
+	OnCreation()
+THEN
+	RESPONSE #100
+		SetGlobal("NoSlime","GLOBAL",1)
+END
+
+IF
+	Die()
+THEN
+	RESPONSE #100
+		IncrementGlobal("NoSlime","GLOBAL",-1)
+END
+
+IF
+	HitBy([ANYONE],FIRE)
+THEN
+	RESPONSE #100
+		NoAction()
+END
+
+IF
+	HitBy([ANYONE],SLASHING)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,JELLY_SPLIT)
+END
+
+IF
+	HitBy([ANYONE],PIERCING)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,JELLY_SPLIT)
+END
+
+IF
+	HitBy([ANYONE],CRUSHING)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,JELLY_SPLIT)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+

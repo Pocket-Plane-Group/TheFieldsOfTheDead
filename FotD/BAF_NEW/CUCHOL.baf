@@ -1,0 +1,1133 @@
+IF
+	HasItem("POTN08",Myself) // Potion of Healing
+	HPPercentLT(Myself,50)
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		UseItem("POTN08",Myself) // Potion of Healing
+END
+
+IF
+	HaveSpell(WIZARD_MIRROR_IMAGE)
+	Global("EnteredIceland","GLOBAL",1)
+	!StateCheck(Myself,STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(Myself,WIZARD_MIRROR_IMAGE)
+END
+
+IF
+	HasItem("POTN12",Myself) // Potion of Stone Giant Strength
+	Global("EnteredIceland","GLOBAL",1)
+	CheckStatLT(Myself,20,STR)
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		UseItem("POTN12",Myself) // Potion of Stone Giant Strength
+END
+
+IF
+	HaveSpell(WIZARD_DIMENSION_DOOR)
+	Global("EnteredIceland","GLOBAL",1)
+	Global("CucholDD","GLOBAL",0)
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+	!See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		SetGlobal("CucholDD","GLOBAL",1)
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		ForceSpellPoint([1724.1289],WIZARD_DIMENSION_DOOR)
+END
+
+IF
+	!See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(TenthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(TenthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(NinthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(EighthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(SixthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(FifthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(FourthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HasItem("spwi118g",Myself) // Chromatic Orb
+	!CheckStat(LastSeenBy(Myself),1,MINORGLOBE)
+	!StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+	See(LastSeenBy(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),15)
+END
+
+IF
+	HaveSpell(WIZARD_MIRROR_IMAGE)
+	See(NearestEnemyOf(Myself))
+	!StateCheck(Myself,STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(Myself,WIZARD_MIRROR_IMAGE)
+END
+
+IF
+	HasItem("POTN12",Myself) // Potion of Stone Giant Strength
+	See(NearestEnemyOf(Myself))
+	CheckStatLT(Myself,20,STR)
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		UseItem("POTN12",Myself) // Potion of Stone Giant Strength
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(TenthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(TenthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(TenthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(NinthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(NinthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(EighthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(EighthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(SeventhNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(SeventhNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(SixthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(SixthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(FifthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(FifthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(FourthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(FourthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(ThirdNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(ThirdNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(SecondNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(SecondNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!General(NearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(NearestEnemyOf(Myself),STATE_CONFUSED)
+	!StateCheck(NearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(NearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	!CheckStat(NearestEnemyOf(Myself),1,TRACKING)
+	!CheckStat(NearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_FEAR)
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!General(LastSeenBy(Myself),UNDEAD)
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!StateCheck(LastSeenBy(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!CheckStat(LastSeenBy(Myself),1,TRACKING)
+	!CheckStat(LastSeenBy(Myself),2,RESISTMAGICCOLD)
+	See(LastSeenBy(Myself))
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(LastSeenBy(Myself),WIZARD_FEAR)
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(TenthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(TenthNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(TenthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(TenthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(NinthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(NinthNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(NinthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(EighthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(EighthNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(EighthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(SeventhNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(SeventhNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(SeventhNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(SixthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(SixthNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(SixthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(FifthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(FifthNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(FifthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(FourthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(FourthNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(FourthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(ThirdNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(ThirdNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(ThirdNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(SecondNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(SecondNearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(SecondNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	General(NearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(NearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(NearestEnemyOf(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(NearestEnemyOf(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(NearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(NearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_HOLD_PERSON)
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	General(LastSeenBy(Myself),HUMANOID)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!StateCheck(LastSeenBy(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(LastSeenBy(Myself),1,RESISTMAGICFIRE)
+	!CheckStat(LastSeenBy(Myself),2,RESISTMAGICFIRE)
+	!CheckStat(LastSeenBy(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(LastSeenBy(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(LastSeenBy(Myself),1,MINORGLOBE)
+	See(LastSeenBy(Myself))
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(LastSeenBy(Myself),WIZARD_HOLD_PERSON)
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(TenthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+	!StateCheck(NearestEnemyOf(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHROMATIC_ORB)
+	!CheckStat(LastSeenBy(Myself),1,MINORGLOBE)
+	!StateCheck(LastSeenBy(Myself),STATE_MIRRORIMAGE)
+	!CheckStat(Myself,1,MINORGLOBE)
+	See(LastSeenBy(Myself))
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(Myself,WIZARD_CHROMATIC_ORB)
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(TenthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(TenthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(NinthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(NinthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(EighthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(EighthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(SeventhNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(SeventhNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(SixthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(SixthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(FifthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(FifthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(FourthNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(FourthNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(ThirdNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(ThirdNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(SecondNearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(SecondNearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	General(NearestEnemyOf(Myself),HUMANOID)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(NearestEnemyOf(Myself),STATE_PANIC)
+	!StateCheck(NearestEnemyOf(Myself),STATE_BERSERK)
+	!StateCheck(NearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(NearestEnemyOf(Myself),STATE_CONFUSED)
+	!CheckStat(NearestEnemyOf(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(NearestEnemyOf(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_CHARM_PERSON)
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	General(LastSeenBy(Myself),HUMANOID)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!StateCheck(LastSeenBy(Myself),STATE_PANIC)
+	!StateCheck(LastSeenBy(Myself),STATE_BERSERK)
+	!StateCheck(LastSeenBy(Myself),STATE_FEEBLEMINDED)
+	!StateCheck(LastSeenBy(Myself),STATE_CONFUSED)
+	!CheckStat(LastSeenBy(Myself),1,RESISTMAGICCOLD)
+	!CheckStat(LastSeenBy(Myself),2,RESISTMAGICCOLD)
+	!CheckStat(LastSeenBy(Myself),1,MINORGLOBE)
+	See(LastSeenBy(Myself))
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(LastSeenBy(Myself),WIZARD_CHARM_PERSON)
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(TenthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(TenthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(TenthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(TenthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(NinthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(NinthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(NinthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(EighthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(EighthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(EighthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(SeventhNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SeventhNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(SeventhNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(SixthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SixthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(SixthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(FifthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(FifthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(FifthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(FourthNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(FourthNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(FourthNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(ThirdNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(ThirdNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(ThirdNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(SecondNearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(SecondNearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(SecondNearestEnemyOf(Myself),1,MINORGLOBE)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!General(NearestEnemyOf(Myself),UNDEAD)
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	!StateCheck(NearestEnemyOf(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(NearestEnemyOf(Myself),1,MINORGLOBE)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	HaveSpell(WIZARD_SLEEP)
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!General(LastSeenBy(Myself),UNDEAD)
+	!StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	!StateCheck(LastSeenBy(Myself),STATE_FEEBLEMINDED)
+	!CheckStat(LastSeenBy(Myself),1,MINORGLOBE)
+	See(LastSeenBy(Myself))
+	!GlobalTimerNotExpired("CastAndAttack","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("CastAndAttack","LOCALS",6)
+		Spell(LastSeenBy(Myself),WIZARD_SLEEP)
+END
+
+IF
+	!HasWeaponEquiped(Myself)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		EquipMostDamagingMelee()
+		SetInterrupt(TRUE)
+END
+
+IF
+	StateCheck(TenthNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(TenthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(NinthNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(NinthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(EighthNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(EighthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(SeventhNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(SeventhNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(SixthNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(SixthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(FifthNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(FifthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(FourthNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(FourthNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(ThirdNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(ThirdNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(SecondNearestEnemyOf(Myself),STATE_HELPLESS)
+	See(SecondNearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	See(NearestEnemyOf(Myself))
+	False()
+THEN
+	RESPONSE #100
+END
+
+IF
+	ActionListEmpty()
+	!StateCheck(Myself,STATE_INVISIBLE)
+	!Allegiance(LastSeenBy(Myself),ENEMY)
+	!Range(LastSeenBy(Myself),5)
+	StateCheck(LastSeenBy(Myself),STATE_HELPLESS)
+	See(LastSeenBy(Myself))
+THEN
+	RESPONSE #10
+		EquipRanged()
+		AttackReevaluate(LastSeenBy(Myself),15)
+	RESPONSE #90
+		Continue()
+END
+
+IF
+	ActionListEmpty()
+	!StateCheck(Myself,STATE_INVISIBLE)
+	See(NearestEnemyOf(Myself))
+	!Range(NearestEnemyOf(Myself),5)
+THEN
+	RESPONSE #100
+		EquipRanged()
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	ActionListEmpty()
+	!StateCheck(Myself,STATE_INVISIBLE)
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),5)
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	ActionListEmpty()
+	GlobalTimerExpired("CastAndAttack","LOCALS")
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),5)
+THEN
+	RESPONSE #100
+		EquipMostDamagingMelee()
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	StateCheck(Myself,STATE_SILENCED)
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	StateCheck(Myself,STATE_BLIND)
+THEN
+	RESPONSE #100
+		RandomWalk()
+END
+
+

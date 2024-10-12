@@ -1,0 +1,32 @@
+IF
+  AttackedBy([GOODCUTOFF],DEFAULT)
+  Allegiance(Myself,NEUTRAL)
+THEN
+  RESPONSE #100
+    Enemy()
+END
+
+IF
+  See([GOODCUTOFF])
+THEN
+  RESPONSE #100
+    AttackReevaluate([GOODCUTOFF],15)
+END
+
+IF
+  See("Deathk")  // ~Death Knight~
+THEN
+  RESPONSE #100
+    AttackReevaluate("Deathk",15)
+END
+
+IF
+  See([GOODCUTOFF])
+  See("Deathk")  // ~Death Knight~
+THEN
+  RESPONSE #50
+    AttackReevaluate([GOODCUTOFF],15)
+  RESPONSE #50
+    AttackReevaluate("Deathk",15)
+END
+

@@ -1,0 +1,11 @@
+IF
+	OR(2)
+		Heard("Seniyad",1)
+		Heard("Druid3",1)
+THEN
+	RESPONSE #100
+		Enemy()
+		ForceSpell(Myself,CLERIC_FLAME_BLADE)
+END
+
+

@@ -1,0 +1,22 @@
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Delay(20)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("RandomWalk","LOCALS",10)
+  RESPONSE #50
+    Wait(50)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  GlobalTimerNotExpired("RandomWalk","LOCALS")
+THEN
+  RESPONSE #80
+    RandomWalk()
+  RESPONSE #20
+    RandomWalkContinuous()
+END
+

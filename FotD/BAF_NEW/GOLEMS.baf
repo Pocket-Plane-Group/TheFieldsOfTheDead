@@ -1,0 +1,108 @@
+IF
+  !StateCheck(TenthNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(TenthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(NinthNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(NinthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(EighthNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(EighthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(SeventhNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(SeventhNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(SixthNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(SixthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(FifthNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(FifthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(FourthNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(FourthNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(ThirdNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(ThirdNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(SecondNearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(SecondNearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(NearestEnemyOf(Myself),STATE_SLOWED)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(NearestEnemyOf(Myself))
+  False()
+THEN
+  RESPONSE #100
+END
+
+IF
+  !StateCheck(LastSeenBy(Myself),STATE_SLOWED)
+  !Allegiance(LastSeenBy(Myself),ENEMY)
+  !GlobalTimerNotExpired("GolemSlow","LOCALS")
+  See(LastSeenBy(Myself))
+THEN
+  RESPONSE #100
+    SetGlobalTimer("GolemSlow","LOCALS",12)
+    ReallyForceSpell(LastSeenBy(Myself),STONE_GOLEM_SLOW)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

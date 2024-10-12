@@ -1,0 +1,8 @@
+IF
+	TookDamage()
+	HaveSpell(END_CONCENTRATION)
+THEN
+	RESPONSE #100
+		ReallyForceSpell(Myself,END_CONCENTRATION)
+		RemoveSpell(END_CONCENTRATION)
+END

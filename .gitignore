@@ -1,0 +1,9 @@
+# Ignore everything
+*.*
+
+# But not these files...
+!/.gitignore
+!/setup-FotD.exe
+!/setup-FotD.tp2
+!FotD/*.*
+!Fotd/**/*.*

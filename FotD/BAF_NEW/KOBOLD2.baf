@@ -1,0 +1,17 @@
+IF
+  Trigger(3)
+THEN
+  RESPONSE #100
+    PlaySound("KOBYELP2")
+    RunAwayFrom("1",50)
+END
+
+IF
+  Trigger(2)
+THEN
+  RESPONSE #100
+    Wait(2)
+    NIDSpecial8()
+    Attack("2")
+END
+

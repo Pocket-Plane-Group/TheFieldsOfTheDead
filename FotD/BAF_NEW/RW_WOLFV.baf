@@ -1,0 +1,43 @@
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Delay(20)
+THEN
+  RESPONSE #50
+    SetGlobalTimer("RandomWalk","LOCALS",10)
+  RESPONSE #50
+    Wait(50)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  GlobalTimerNotExpired("RandomWalk","LOCALS")
+THEN
+  RESPONSE #80
+    Shout(123)
+    RandomWalk()
+  RESPONSE #20
+    Shout(123)
+    RandomWalkContinuous()
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],123)
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutFollow","LOCALS",10)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  GlobalTimerNotExpired("ShoutFollow","LOCALS")
+  !Range(LastHeardBy(Myself),10)
+THEN
+  RESPONSE #100
+    MoveToObject(LastHeardBy(Myself))
+END
+

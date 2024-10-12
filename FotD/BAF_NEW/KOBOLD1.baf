@@ -1,0 +1,23 @@
+IF
+  Trigger(2)
+THEN
+  RESPONSE #100
+    Wait(2)
+    NIDSpecial8()
+    MoveToPoint([1880.1179])
+    SendTrigger("1",102)
+    SendTrigger("2",102)
+    SendTrigger("3",102)
+END
+
+IF
+  Die()
+THEN
+  RESPONSE #100
+    SendTrigger("5",3)
+    SendTrigger("6",3)
+    SendTrigger("1",4)
+    SendTrigger("2",4)
+    SendTrigger("3",4)
+END
+

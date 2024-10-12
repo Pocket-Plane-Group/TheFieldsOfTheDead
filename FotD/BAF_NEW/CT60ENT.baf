@@ -1,0 +1,98 @@
+IF
+  Opened([ANYONE])
+THEN
+  RESPONSE #100
+    DisplayString(LastTrigger,14381)  // ~Trap Sprung~ [AMB_D05C]
+    ForceSpell(LastTrigger,CLERIC_ENTANGLE)
+END
+
+IF
+  Disarmed(Player1)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player2)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player3)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player4)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player5)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Disarmed(Player6)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Unlocked(Player1)
+  CheckStatGT(Player1,1,LOCKPICKING)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Unlocked(Player2)
+  CheckStatGT(Player1,1,LOCKPICKING)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Unlocked(Player3)
+  CheckStatGT(Player1,1,LOCKPICKING)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Unlocked(Player4)
+  CheckStatGT(Player1,1,LOCKPICKING)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Unlocked(Player5)
+  CheckStatGT(Player1,1,LOCKPICKING)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+
+IF
+  Unlocked(Player6)
+  CheckStatGT(Player1,1,LOCKPICKING)
+THEN
+  RESPONSE #100
+    AddexperienceParty(200)
+END
+

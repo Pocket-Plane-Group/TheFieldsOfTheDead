@@ -1,0 +1,67 @@
+IF
+  See(NearestEnemyOf(Myself))
+  !Range(NearestEnemyOf(Myself),18)
+  !GlobalTimerNotExpired("EyeRay1","LOCALS")
+  !GlobalTimerNotExpired("RayAndNotAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("EyeRay1","LOCALS",36)
+    SetGlobalTimer("RayAndNotAttack","LOCALS",3)
+    ForceSpell(NearestEnemyOf(Myself),RETRIEVER_EYE_RAY_1)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Range(NearestEnemyOf(Myself),18)
+  !GlobalTimerNotExpired("EyeRay1","LOCALS")
+THEN
+  RESPONSE #100
+    RunAwayFromNoInterrupt(NearestEnemyOf(Myself),15)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("EyeRay2","LOCALS")
+  !GlobalTimerNotExpired("RayAndNotAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("EyeRay2","LOCALS",36)
+    SetGlobalTimer("RayAndNotAttack","LOCALS",3)
+    ForceSpell(NearestEnemyOf(Myself),RETRIEVER_EYE_RAY_2)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("EyeRay3","LOCALS")
+  !GlobalTimerNotExpired("RayAndNotAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("EyeRay3","LOCALS",36)
+    SetGlobalTimer("RayAndNotAttack","LOCALS",3)
+    ForceSpell(NearestEnemyOf(Myself),RETRIEVER_EYE_RAY_3)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("EyeRay4","LOCALS")
+  !StateCheck(NearestEnemyOf(Myself),STATE_STONE_DEATH)
+  !GlobalTimerNotExpired("RayAndNotAttack","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("EyeRay4","LOCALS",36)
+    SetGlobalTimer("RayAndNotAttack","LOCALS",3)
+    ForceSpell(NearestEnemyOf(Myself),RETRIEVER_EYE_RAY_4)
+END
+
+IF
+  ActionListEmpty()
+  GlobalTimerNotExpired("EyeRay1","LOCALS")
+  GlobalTimerNotExpired("EyeRay2","LOCALS")
+  GlobalTimerNotExpired("EyeRay3","LOCALS")
+  GlobalTimerNotExpired("EyeRay4","LOCALS")
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

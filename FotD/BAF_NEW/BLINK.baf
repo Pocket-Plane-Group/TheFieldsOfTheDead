@@ -1,0 +1,333 @@
+IF
+  GlobalTimerExpired("BlinkStop","LOCALS")
+THEN
+  RESPONSE #100
+    ReallyForceSpell(Myself,BANEGUARD_BLINK_STOP)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  See(SeventhNearestEnemyOf(Myself))
+  See(EighthNearestEnemyOf(Myself))
+  See(NinthNearestEnemyOf(Myself))
+  See(TenthNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FifthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SixthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SeventhNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SeventhNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(EighthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(EighthNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NinthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NinthNearestEnemyOf(Myself))
+  RESPONSE #10
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(TenthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(TenthNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  See(SeventhNearestEnemyOf(Myself))
+  See(EighthNearestEnemyOf(Myself))
+  See(NinthNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FifthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SixthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SeventhNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SeventhNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(EighthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(EighthNearestEnemyOf(Myself))
+  RESPONSE #11
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NinthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NinthNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  See(SeventhNearestEnemyOf(Myself))
+  See(EighthNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #13
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #12
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #13
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #12
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #13
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FifthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #12
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SixthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #13
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SeventhNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SeventhNearestEnemyOf(Myself))
+  RESPONSE #12
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(EighthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(EighthNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  See(SeventhNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FifthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SixthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+  RESPONSE #14
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SeventhNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SeventhNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  See(SixthNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #16
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #17
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #16
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #17
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #16
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FifthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+  RESPONSE #17
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SixthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SixthNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  See(FifthNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #20
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #20
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #20
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #20
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+  RESPONSE #20
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FifthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FifthNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  See(FourthNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #25
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #25
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #25
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+  RESPONSE #25
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(FourthNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(FourthNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  See(ThirdNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #33
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #33
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+  RESPONSE #33
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(ThirdNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(ThirdNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #50
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+  RESPONSE #50
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(SecondNearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(SecondNearestEnemyOf(Myself))
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !Range(NearestEnemyOf(Myself),5)
+  !GlobalTimerNotExpired("Blink","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Blink","LOCALS",6)
+    ReallyForceSpell(NearestEnemyOf(Myself),BANEGUARD_BLINK)
+    AttackOneRound(NearestEnemyOf(Myself))
+END
+

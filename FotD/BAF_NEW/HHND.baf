@@ -1,0 +1,120 @@
+IF
+  See(NearestEnemyOf(Myself))
+  !Heard([EVILCUTOFF],15)
+  !GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+    Shout(15)
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],15)
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+THEN
+  RESPONSE #100
+    Shout(15)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(LastHeardBy(Myself)))))
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],15)
+  Exists(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+THEN
+  RESPONSE #100
+    Shout(15)
+    MoveToObject(LastHeardBy(LastHeardBy(LastHeardBy(Myself))))
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],15)
+  Exists(LastHeardBy(LastHeardBy(Myself)))
+THEN
+  RESPONSE #100
+    Shout(15)
+    MoveToObject(LastHeardBy(LastHeardBy(Myself)))
+END
+
+IF
+  ActionListEmpty()
+  !See(NearestEnemyOf(Myself))
+  Heard([EVILCUTOFF],15)
+THEN
+  RESPONSE #100
+    Shout(15)
+    MoveToObject(LastHeardBy(Myself))
+END
+
+IF
+  Global("HHPlayer1","LOCALS",0)
+  Range(Player1,30)
+  StateCheck(Player1,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    SetGlobal("HHPlayer1","LOCALS",1)
+    ApplySpell(Player1,HELL_HOUND_DETECT_INVISIBILITY)
+END
+
+IF
+  Global("HHPlayer2","LOCALS",0)
+  Range(Player2,30)
+  StateCheck(Player2,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    SetGlobal("HHPlayer2","LOCALS",1)
+    ApplySpell(Player2,HELL_HOUND_DETECT_INVISIBILITY)
+END
+
+IF
+  Global("HHPlayer3","LOCALS",0)
+  Range(Player3,30)
+  StateCheck(Player3,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    SetGlobal("HHPlayer3","LOCALS",1)
+    ApplySpell(Player3,HELL_HOUND_DETECT_INVISIBILITY)
+END
+
+IF
+  Global("HHPlayer4","LOCALS",0)
+  Range(Player4,30)
+  StateCheck(Player4,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    SetGlobal("HHPlayer4","LOCALS",1)
+    ApplySpell(Player4,HELL_HOUND_DETECT_INVISIBILITY)
+END
+
+IF
+  Global("HHPlayer5","LOCALS",0)
+  Range(Player5,30)
+  StateCheck(Player5,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    SetGlobal("HHPlayer5","LOCALS",1)
+    ApplySpell(Player5,HELL_HOUND_DETECT_INVISIBILITY)
+END
+
+IF
+  Global("HHPlayer6","LOCALS",0)
+  Range(Player6,30)
+  StateCheck(Player6,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    SetGlobal("HHPlayer6","LOCALS",1)
+    ApplySpell(Player6,HELL_HOUND_DETECT_INVISIBILITY)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+

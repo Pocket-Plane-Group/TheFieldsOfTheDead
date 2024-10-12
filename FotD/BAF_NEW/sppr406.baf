@@ -1,0 +1,48 @@
+IF
+	NumCreatureGT([GOODCUTOFF],5)
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,DEFENSIVE_HARMONY_5)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	NumCreature([GOODCUTOFF],5)
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,DEFENSIVE_HARMONY_4)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	NumCreature([GOODCUTOFF],4)
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,DEFENSIVE_HARMONY_3)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	NumCreature([GOODCUTOFF],3)
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,DEFENSIVE_HARMONY_2)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	NumCreature([GOODCUTOFF],2)
+THEN
+	RESPONSE #100
+		ForceSpell(Myself,DEFENSIVE_HARMONY_1)
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+IF
+	NumCreatureLT([GOODCUTOFF],2)
+THEN
+	RESPONSE #100
+		ChangeAIScript("BLANK",GENERAL)
+END
+
+

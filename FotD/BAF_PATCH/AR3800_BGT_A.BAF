@@ -1,0 +1,13 @@
+IF
+	OnCreation()
+	Global("Chapter","GLOBAL",2)
+THEN
+	RESPONSE #100
+		StartMovie("NASHKELL")
+		SmallWait(1)
+		SetGlobal("Chapter","GLOBAL",1)
+		IncrementChapter("Chptxt-2")
+		SetGlobal("Chapter","GLOBAL",3)
+		AddJournalEntry(74769,INFO)
+		Continue()
+END

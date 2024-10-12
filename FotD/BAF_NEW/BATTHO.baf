@@ -1,0 +1,85 @@
+IF
+  Range(Player1,20)
+  StateCheck(Player1,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    ApplySpell(Player1,HORROR_DETECT_INVISIBILITY)
+END
+
+IF
+  Range(Player2,20)
+  StateCheck(Player2,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    ApplySpell(Player2,HORROR_DETECT_INVISIBILITY)
+END
+
+IF
+  Range(Player3,20)
+  StateCheck(Player3,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    ApplySpell(Player3,HORROR_DETECT_INVISIBILITY)
+END
+
+IF
+  Range(Player4,20)
+  StateCheck(Player4,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    ApplySpell(Player4,HORROR_DETECT_INVISIBILITY)
+END
+
+IF
+  Range(Player5,20)
+  StateCheck(Player5,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    ApplySpell(Player5,HORROR_DETECT_INVISIBILITY)
+END
+
+IF
+  Range(Player6,20)
+  StateCheck(Player6,STATE_INVISIBLE)
+THEN
+  RESPONSE #100
+    ApplySpell(Player6,HORROR_DETECT_INVISIBILITY)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  !GlobalTimerNotExpired("BATTHO","LOCALS")
+THEN
+  RESPONSE #100
+    ForceSpell(NearestEnemyOf(Myself),WIZARD_MAGIC_MISSILE)
+    SetGlobalTimer("BATTHO","LOCALS",18)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  Global("BattleHorror","LOCALS",0)
+  !Range(NearestEnemyOf(Myself),5)
+THEN
+  RESPONSE #100
+    SetGlobal("BattleHorror","LOCALS",1)
+    ForceSpell(NearestEnemyOf(Myself),PHASE_SPIDER_TELEPORT)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+  See(SecondNearestEnemyOf(Myself))
+  Global("HorrorBlink","LOCALS",0)
+THEN
+  RESPONSE #100
+    SetGlobal("HorrorBlink","LOCALS",1)
+    SetGlobalTimer("BlinkStop","LOCALS",60)
+    ReallyForceSpell(Myself,BANEGUARD_BLINK_SPELL)
+END
+
+IF
+  See(NearestEnemyOf(Myself))
+THEN
+  RESPONSE #100
+    AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+

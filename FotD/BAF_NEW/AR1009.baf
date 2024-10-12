@@ -1,0 +1,16 @@
+IF
+  PartyHasItem("CLCK22")  // ~Shandalar's Cloak~
+  Global("iceisle","GLOBAL",0)
+THEN
+  RESPONSE #100
+    Wait(10)
+    SetGlobal("iceisle","GLOBAL",1)
+    ActionOverride(Player1,LeaveAreaLUAPanic("AR1000","",[1798.624],12))
+    ActionOverride(Player1,LeaveAreaLUA("AR1000","",[1798.624],12))
+    ActionOverride(Player2,LeaveAreaLUA("AR1000","",[1793.748],12))
+    ActionOverride(Player3,LeaveAreaLUA("AR1000","",[1736.751],12))
+    ActionOverride(Player4,LeaveAreaLUA("AR1000","",[1681.726],12))
+    ActionOverride(Player5,LeaveAreaLUA("AR1000","",[1681.726],12))
+    ActionOverride(Player6,LeaveAreaLUA("AR1000","",[1795.687],12))
+END
+

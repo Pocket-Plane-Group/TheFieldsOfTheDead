@@ -1,0 +1,31 @@
+IF
+  Global("Recast","LOCALS",1)
+  GlobalTimerExpired("ChantStop","LOCALS")
+THEN
+  RESPONSE #100
+    ApplySpell(Myself,CHANT_STOP)
+    SetGlobal("Recast","LOCALS",0)
+END
+
+IF
+  !GlobalTimerNotExpired("Chant","LOCALS")
+  GlobalTimerNotExpired("ChantStop","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Chant","LOCALS",6)
+    SetGlobalTimer("ChantStop","LOCALS",7)
+    SetGlobal("Recast","LOCALS",1)
+    ForceSpell(Myself,CHANT)
+END
+
+IF
+  !GlobalTimerNotExpired("Chant","LOCALS")
+  !GlobalTimerNotExpired("ChantStop","LOCALS")
+THEN
+  RESPONSE #100
+    SetGlobalTimer("Chant","LOCALS",6)
+    SetGlobalTimer("ChantStop","LOCALS",7)
+    SetGlobal("Recast","LOCALS",1)
+    ForceSpell(Myself,CHANT)
+END
+

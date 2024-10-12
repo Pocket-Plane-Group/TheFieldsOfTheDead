@@ -1,0 +1,43 @@
+IF
+	See(NearestEnemyOf(Myself))
+	!Heard([EVILCUTOFF],7)
+	!GlobalTimerNotExpired("ShoutSeeEnemy","LOCALS")
+THEN
+	RESPONSE #100
+		SetGlobalTimer("ShoutSeeEnemy","LOCALS",30)
+		VerbalConstant(Myself,BATTLE_CRY)
+		Shout(7)
+END
+
+IF
+	ActionListEmpty()
+	!See(NearestEnemyOf(Myself))
+	Heard([EVILCUTOFF],7)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		MoveToObject(LastHeardBy(Myself))
+		SetInterrupt(TRUE)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!Range(NearestEnemyOf(Myself),5)
+	!StateCheck(Myself,STATE_BLIND)
+	!StateCheck(NearestEnemyOf(Myself),STATE_STONE_DEATH)
+THEN
+	RESPONSE #100
+		SelectWeaponAbility(SLOT_WEAPON,0)
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	Range(NearestEnemyOf(Myself),5)
+THEN
+	RESPONSE #100
+		SelectWeaponAbility(SLOT_WEAPON1,0)
+		AttackReevaluate(NearestEnemyOf(Myself),15)
+END
+
+

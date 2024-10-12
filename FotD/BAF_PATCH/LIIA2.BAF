@@ -1,0 +1,10 @@
+IF
+	See([ENEMY])
+	Global("SarevokBehavior","GLOBAL",0)
+	Global("NobleDopple","GLOBAL",1)
+THEN
+	RESPONSE #10
+		Attack([ENEMY])
+END
+
+

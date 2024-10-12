@@ -1,0 +1,9 @@
+IF
+	Global("mirrordone","GLOBAL",1)
+THEN
+	RESPONSE #100
+		CreateCreature("%gooddeat%",[692.637],0)
+		Continue()
+END
+
+

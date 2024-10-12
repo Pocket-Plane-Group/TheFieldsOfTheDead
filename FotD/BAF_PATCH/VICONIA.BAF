@@ -1,0 +1,136 @@
+IF
+	CheckStatGT(Myself,1,LEVEL)
+	Global("ViconiaMR","GLOBAL",0)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",1)
+END
+
+IF
+	CheckStatGT(Myself,2,LEVEL)
+	Global("ViconiaMR","GLOBAL",1)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",2)
+END
+
+IF
+	CheckStatGT(Myself,3,LEVEL)
+	Global("ViconiaMR","GLOBAL",2)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",3)
+END
+
+IF
+	CheckStatGT(Myself,4,LEVEL)
+	Global("ViconiaMR","GLOBAL",3)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",4)
+END
+
+IF
+	CheckStatGT(Myself,5,LEVEL)
+	Global("ViconiaMR","GLOBAL",4)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",5)
+END
+
+IF
+	CheckStatGT(Myself,6,LEVEL)
+	Global("ViconiaMR","GLOBAL",5)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",6)
+END
+
+IF
+	CheckStatGT(Myself,7,LEVEL)
+	Global("ViconiaMR","GLOBAL",6)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",7)
+END
+
+IF
+	CheckStatGT(Myself,8,LEVEL)
+	Global("ViconiaMR","GLOBAL",7)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",8)
+END
+
+IF
+	CheckStatGT(Myself,9,LEVEL)
+	Global("ViconiaMR","GLOBAL",8)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",9)
+END
+
+IF
+	CheckStatGT(Myself,10,LEVEL)
+	Global("ViconiaMR","GLOBAL",9)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",10)
+END
+
+IF
+	CheckStatGT(Myself,11,LEVEL)
+	Global("ViconiaMR","GLOBAL",10)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",11)
+END
+
+IF
+	CheckStatGT(Myself,12,LEVEL)
+	Global("ViconiaMR","GLOBAL",11)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",12)
+END
+
+IF
+	CheckStatGT(Myself,13,LEVEL)
+	Global("ViconiaMR","GLOBAL",12)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",13)
+END
+
+IF
+	CheckStatGT(Myself,14,LEVEL)
+	Global("ViconiaMR","GLOBAL",13)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",14)
+END
+
+IF
+	CheckStatGT(Myself,15,LEVEL)
+	Global("ViconiaMR","GLOBAL",14)
+THEN
+	RESPONSE #100
+		ApplySpell(Myself,VICONIA_MR)
+		SetGlobal("ViconiaMR","GLOBAL",15)
+END
+
+

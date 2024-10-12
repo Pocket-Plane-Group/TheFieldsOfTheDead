@@ -1,0 +1,33 @@
+IF
+	Global("HamaBehavior","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("HamaBehavior","GLOBAL",6)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(NearestEnemyOf(Myself),STATE_CHARMED)
+	HaveSpell(WIZARD_CHARM_PERSON)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),WIZARD_CHARM_PERSON)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+	!StateCheck(NearestEnemyOf(Myself),STATE_HELPLESS)
+	HaveSpell(CLERIC_ENTANGLE)
+THEN
+	RESPONSE #100
+		Spell(NearestEnemyOf(Myself),CLERIC_ENTANGLE)
+END
+
+IF
+	See(NearestEnemyOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(NearestEnemyOf(Myself),30)
+END
+
+

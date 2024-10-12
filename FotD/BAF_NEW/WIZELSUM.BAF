@@ -1,0 +1,85 @@
+IF
+	Die()
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ApplySpell(LastSummonerOf(Myself),END_CONCENTRATION)
+		ActionOverride(LastSummonerOf(Myself),RemoveSpell(END_CONCENTRATION))
+		DestroySelf()
+END
+
+IF
+	Die()
+THEN
+	RESPONSE #100
+		ActionOverride(LastSummonerOf(Myself),RemoveSpell(END_CONCENTRATION))
+		DestroySelf()
+END
+
+IF
+	SpellCastInnate(LastSummonerOf(Myself),END_CONCENTRATION)
+THEN
+	RESPONSE #100
+		SetGlobal("Elementalcontrol","LOCALS",3)
+		Enemy()
+END
+
+IF
+	HitBy([GOODCUTOFF],0)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		ApplySpell(LastSummonerOf(Myself),END_CONCENTRATION)
+		ActionOverride(LastSummonerOf(Myself),RemoveSpell(END_CONCENTRATION))
+		Enemy()
+END
+
+IF
+	Global("Elementalcontrol","LOCALS",0)
+	Allegiance(LastSummonerOf(Myself),ENEMY)
+	!Allegiance(Myself,ENEMY)
+THEN
+	RESPONSE #100
+		SetGlobal("Elementalcontrol","LOCALS",1)
+		Enemy()
+END
+
+IF
+	Global("Elementalcontrol","LOCALS",0)
+	Allegiance(LastSummonerOf(Myself),PC)
+	!Allegiance(Myself,ALLY)
+THEN
+	RESPONSE #100
+		SetGlobal("Elementalcontrol","LOCALS",1)
+		Ally()
+END
+
+IF
+	!GlobalTimerNotExpired("Elementalcontrol","LOCALS")
+	Global("Elementalcontrol","LOCALS",1)
+THEN
+	RESPONSE #100
+		SetGlobalTimer("Elementalcontrol","LOCALS",12)
+		SetGlobal("Elementalcontrol","LOCALS",2)
+END
+
+IF
+	!GlobalTimerNotExpired("Elementalcontrol","LOCALS")
+THEN
+	RESPONSE #2
+		Enemy()
+		SetGlobal("Elementalcontrol","LOCALS",3)
+	RESPONSE #98
+		SetGlobalTimer("Elementalcontrol","LOCALS",6)
+		Continue()
+END
+
+IF
+	Global("Elementalcontrol","LOCALS",3)
+	Detect(LastSummonerOf(Myself))
+THEN
+	RESPONSE #100
+		AttackReevaluate(LastSeenBy(Myself),30)
+END
+
+
