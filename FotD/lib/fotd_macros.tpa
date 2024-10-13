@@ -1,0 +1,127 @@
+// MACROS //
+
+DEFINE_PATCH_MACRO ~COUNT_EFFECTS~ BEGIN
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  SET "#abilitiesread" = "0"
+  SET "#effects" = "0"
+  WHILE ("%#abilities%" > 0) BEGIN
+    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x38)) "#e"
+    SET "#effects" += "%#e%"
+    SET "#abilitiesread" += "1"
+    SET "#abilities" -= "1"
+  END
+END
+
+DEFINE_PATCH_MACRO ~ADD_PURCHASED_ITEM~ BEGIN
+  INSERT_BYTES (LONG_AT 0x2c) (4 * items_to_add)
+  WRITE_LONG 0x30 (THIS + items_to_add)
+  WRITE_LONG 0x34 (THIS < LONG_AT 0x2c ? THIS : THIS + 4 * items_to_add)
+  WRITE_LONG 0x4c (THIS < LONG_AT 0x2c ? THIS : THIS + 4 * items_to_add)
+  WRITE_LONG 0x70 (THIS < LONG_AT 0x2c ? THIS : THIS + 4 * items_to_add)
+  WHILE (items_to_add > 0) BEGIN   
+    WRITE_LONG (LONG_AT 0x2c + (4 * (items_to_add - 1))) EVALUATE_BUFFER ~item_code%items_to_add%~
+      SET items_to_add -= 1
+  END
+END
+
+DEFINE_PATCH_MACRO ~DELETE_PURCHASED_ITEM~ BEGIN
+  READ_LONG 0x30 "#items"
+  WHILE ("#items" > 0) BEGIN
+	READ_LONG (LONG_AT 0x2c + ("4" * ("#items" - "1"))) "purchaseditem"
+	PATCH_IF ("purchaseditem" = "item_to_delete") THEN BEGIN
+	  DELETE_BYTES (LONG_AT 0x2c + ("4" * ("#items" - "1"))) "4"
+		WRITE_LONG 0x30 (THIS - "1")
+		PATCH_IF (LONG_AT 0x34 > LONG_AT 0x2c) THEN BEGIN WRITE_LONG 0x34 (THIS - "4") END
+		PATCH_IF (LONG_AT 0x4c > LONG_AT 0x2c) THEN BEGIN WRITE_LONG 0x4c (THIS - "4") END
+		PATCH_IF (LONG_AT 0x70 > LONG_AT 0x2c) THEN BEGIN WRITE_LONG 0x70 (THIS - "4") END
+		SET "#items" = "0"
+	END
+	SET "#items" -= "1"
+  END
+  SET "purchaseditem" = "0"
+  SET "item_to_delete" = "0"
+END
+
+DEFINE_PATCH_MACRO ~ADD_SPELL_HEADER~ BEGIN
+  READ_LONG 0x34 "spelllevel"
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  READ_LONG 0x6a "effectsoffset"
+  WHILE ("%#abilities%" < "%#abilitiestotal%") BEGIN
+    INSERT_BYTES ("%abilitiesoffset%" + ("%#abilities%" * 0x28)) "0x28"
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28)) "%type%"
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x2) "%icon_location%"
+    WRITE_EVALUATED_ASCII ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x4) ~%icon%~
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0xc) "%target%"
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0xd) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0xe) "%range%"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x10) (("%spelllevel%" * 2) - 1 + "%#abilities%")
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x12) "%casting_speed%"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x14) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x16) "6"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x18) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1a) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1c) "1"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1e) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x20) "%#effectstotal%"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x22) "1"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28)+ 0x24) "01"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x26) "%projectile%"
+    SET "#abilities" += "1"
+    WRITE_SHORT 0x68 "%#abilities%"
+    SET "effectsoffset" += "0x28"
+    WRITE_LONG 0x6a "%effectsoffset%"
+  END
+  SET "#abilitiestotal" = "0"
+  SET "type" = "0"
+  SET "icon_location" = "0"
+  SPRINT "icon" ~~
+  SET "target" = "0"
+  SET "range" = "0"
+  SET "casting_speed" = "0"
+  SET "projectile" = "0"
+END
+
+DEFINE_PATCH_MACRO ~ADD_ITEM_HEADER~ BEGIN
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_LONG 0x6a "effectsoffset"
+  INSERT_BYTES "%abilitiesoffset%" "0x38"
+  WRITE_BYTE "%abilitiesoffset%" "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x1) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x2) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x3) "0"
+  WRITE_ASCII_TERMINATE ("%abilitiesoffset%" + 0x4) ~~
+  WRITE_BYTE ("%abilitiesoffset%" + 0xc) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0xd) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0xe) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x10) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x11) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x12) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x13) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x14) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x16) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x17) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x18) "0"
+  WRITE_BYTE ("%abilitiesoffset%" + 0x19) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x1a) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x1c) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x1e) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x20) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x22) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x24) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x26) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x28) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x2a) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x2c) "34"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x2e) "33"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x30) "33"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x32) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x34) "0"
+  WRITE_SHORT ("%abilitiesoffset%" + 0x36) "0"
+  SET "abilities" = "1"
+  WRITE_SHORT 0x68 "%abilities%"
+  SET "effectsoffset" += "0x38"
+  WRITE_LONG 0x6a "%effectsoffset%"
+END

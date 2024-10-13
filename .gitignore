@@ -1,8 +1,8 @@
-# Ignore everything
+# Ignore these files and folders
 *.*
-
-# Ignore backup folders
 Fotd/backup/**/
+overide
+overwrite
 
 # Keep mod files
 !/.gitignore

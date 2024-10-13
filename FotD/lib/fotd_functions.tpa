@@ -1,0 +1,70 @@
+// FUNCTIONS
+
+DEFINE_PATCH_FUNCTION COUNT_ITEM_EFFECTS RET count BEGIN
+  SET count = 0
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  SET "#abilitiesread" = "0"
+  WHILE ("%#abilities%" > 0) BEGIN
+    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x38)) "#e"
+    SET count += "%#e%"
+    SET "#abilitiesread" += "1"
+    SET "#abilities" -= "1"
+  END
+  PATCH_PRINT ~Counted %count% effects~
+END
+
+DEFINE_PATCH_FUNCTION COUNT_SPELL_EFFECTS RET count BEGIN
+  SET count = 0
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  SET "#abilitiesread" = "0"
+  WHILE ("%#abilities%" > 0) BEGIN
+    READ_SHORT ("%abilitiesoffset%" + 0x1e + ("%#abilitiesread%" * 0x28)) "#e"
+    SET count += "%#e%"
+    SET "#abilitiesread" += "1"
+    SET "#abilities" -= "1"
+  END
+  PATCH_PRINT ~Counted %count% effects~
+END
+
+DEFINE_PATCH_FUNCTION add_spell_header BEGIN
+  READ_LONG 0x34 "spelllevel"
+  READ_LONG 0x64 "abilitiesoffset"
+  READ_SHORT 0x68 "#abilities"
+  READ_LONG 0x6a "effectsoffset"
+  WHILE ("%#abilities%" < "%#abilitiestotal%") BEGIN
+    INSERT_BYTES ("%abilitiesoffset%" + ("%#abilities%" * 0x28)) "0x28"
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28)) "%type%"
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x2) "%icon_location%"
+    WRITE_EVALUATED_ASCII ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x4) ~%icon%~
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0xc) "%target%"
+    WRITE_BYTE ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0xd) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0xe) "%range%"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x10) (("%spelllevel%" * 2) - 1 + "%#abilities%")
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x12) "%casting_speed%"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x14) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x16) "6"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x18) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1a) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1c) "1"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x1e) "0"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x20) "%#effectstotal%"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x22) "1"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28)+ 0x24) "01"
+    WRITE_SHORT ("%abilitiesoffset%" + ("%#abilities%" * 0x28) + 0x26) "%projectile%"
+    SET "#abilities" += "1"
+    WRITE_SHORT 0x68 "%#abilities%"
+    SET "effectsoffset" += "0x28"
+    WRITE_LONG 0x6a "%effectsoffset%"
+  END
+  SET "#abilitiestotal" = "0"
+  SET "type" = "0"
+  SET "icon_location" = "0"
+  SPRINT "icon" ~~
+  SET "target" = "0"
+  SET "range" = "0"
+  SET "casting_speed" = "0"
+  SET "projectile" = "0"
+END
