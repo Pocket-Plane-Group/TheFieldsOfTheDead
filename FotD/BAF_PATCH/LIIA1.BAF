@@ -1,8 +1,0 @@
-IF
-	See([ENEMY])
-THEN
-	RESPONSE #10
-		Attack([ENEMY])
-END
-
-

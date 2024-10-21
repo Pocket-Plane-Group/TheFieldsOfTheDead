@@ -1,23 +1,25 @@
 IF
-	AttackedBy([ANYONE],DEFAULT)
+    AttackedBy([ANYONE],DEFAULT)
+    OR(2)
+        !Allegiance(Myself,GOODCUTOFF)
+        !Allegiance(LastAttackerOf(Myself),GOODCUTOFF)
 THEN
-	RESPONSE #100
-		AttackReevaluate(LastAttackerOf(Myself),15)
+    RESPONSE #100
+        AttackReevaluate(LastAttackerOf(Myself),15)
 END
 
 IF
-	See(NearestEnemyOf(Myself))
-	Class(NearestEnemyOf(Myself),CLERIC)
+    See(NearestEnemyOf(Myself))
+    Class(NearestEnemyOf(Myself),CLERIC)
 THEN
-	RESPONSE #100
-		AttackReevaluate(NearestEnemyOf(Myself),15)
+    RESPONSE #100
+        AttackReevaluate(NearestEnemyOf(Myself),15)
 END
 
 IF
-	See(NearestEnemyOf(Myself))
+    See(NearestEnemyOf(Myself))
 THEN
-	RESPONSE #100
-		AttackReevaluate(NearestEnemyOf(Myself),15)
+    RESPONSE #100
+        AttackReevaluate(NearestEnemyOf(Myself),15)
 END
-
 
