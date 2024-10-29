@@ -4,6 +4,8 @@ AUTHOR ~echon@echon.dk~
 
 VERSION ~v2.00 beta 5~
 
+AUTO_EVAL_STRINGS
+
 ALWAYS
   INCLUDE ~Fotd\lib\add_map_icons.tpa~
   INCLUDE ~Fotd\lib\fotd_macros.tpa~
@@ -30,9 +32,14 @@ END
 END
 END
 
-LANGUAGE ~English~ ~english~ ~fotd\FotDEnglish.tra~
+// LANGUAGES
 
-BEGIN ~The Fields of the Dead~
+LANGUAGE
+~English~
+~english~
+~fotd\languages\English\setup.tra~
+
+BEGIN ~The Fields of the Dead~ DESIGNATED 100
 
 // DISABLE CORRUPTED FILES //
 
