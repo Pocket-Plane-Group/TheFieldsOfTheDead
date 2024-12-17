@@ -4,6 +4,9 @@ A mod for Baldur's Gate: Enhanced Edition
 ## Status
 The mod is currently under development. It will likely be broken down into additonal subcomponents. Compatibility with EET would be nice to have. Several changes to the game that do not fit with the theme of the mod are due to be removed.
 
+## Support
+Feel free to report any issues here, or on the [PPG board](https://forums.pocketplane.net/index.php?board=54.0). 
+
 ## Description
 The Fields of the Dead is a mod that seeks to expand and renew the game. The first part of the mod brings the game closer to the AD&D 2E rules which have been updated to the extent the Infinity Engine allows it. The focus here is on adding more options and details to the things that have been simplified, as well as introducing things that were never implemented.
 
