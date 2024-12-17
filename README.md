@@ -2,7 +2,7 @@
 A mod for Baldur's Gate: Enhanced Edition
 
 ## Status
-The mod is currently under development. It will likely be broken down into additonal subcomponents. Compatibility with EET would be nice to have. Several changes to the game that do not fit with the theme of the mod are due to be removed.
+The mod is currently under development. It will likely be broken down into additional subcomponents. Compatibility with EET would be nice to have. Several changes to the game that do not fit with the theme of the mod are due to be removed.
 
 ## Support
 Feel free to report any issues here, or on the [PPG board](https://forums.pocketplane.net/index.php?board=54.0). 
